@@ -79,7 +79,10 @@ const getSpot = async (id) => {
 
 const updateSpot = async (id, params) => {
   try {
-    const spot = await spotModel.findOneAndUpdate({ _id: id }, params);
+    const spot = await spotModel.findOneAndUpdate(
+      { _id: id },
+      { price: params.price, number: params.number }
+    );
     if (!spot) {
       return ({
         code: 404,

@@ -1,8 +1,7 @@
 const chai = require('chai');
 const chaiHttp = require('chai-http');
 const common = require('../src/libs/common');
-const server = require('../app.js');
-const reservationModel = require(common.routing('src/models', 'Reservation.js'));
+const server = require('../app');
 const spotModel = require(common.routing('src/models', 'Spot.js'));
 const sinon = require('sinon');
 
