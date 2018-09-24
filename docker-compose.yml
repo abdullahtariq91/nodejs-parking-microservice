@@ -6,6 +6,7 @@ services:
       context: ./spot-checker-microservice
       dockerfile: Dockerfile
     environment:
+      PORT: 8080
       DATABASE_URL: 'mongodb://@mongo:27017/nodejs-spots'
     container_name: spotchecker
     image: spotchecker
