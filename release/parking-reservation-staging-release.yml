@@ -1,0 +1,31 @@
+- hosts: localhost
+
+  roles:
+    - common
+    - staging
+
+  vars:
+    AWS_ACCOUNT_ID: '{{AWS_ACCOUNT_ID}}'
+    REGION: "eu-west-1"
+    REGEX: 'value=\"([^"]+)'
+    ENVIRONMENT: [
+      {
+        'name': 'DATABASE_URL',
+        'value': '{{DATABASE_URL}}'
+      },
+      {
+        'name': 'PORT',
+        'value': '{{{PORT}}'
+      },
+      {
+        'name': 'env',
+        'value': '{{ENV}}'
+      }
+    ]
+
+  tasks:
+    - import_tasks: ./roles/common/tasks/common.yml
+
+    - import_tasks: ./roles/common/tasks/task_definition__spotchecker.yml
+    - import_tasks: ./roles/common/tasks/post_deployment_tasks.yml
+
