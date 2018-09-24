@@ -9,6 +9,7 @@ const checkSpots = async () => {
     const timeNow = new Date();
     for (let i = 0; i < reservations.length; i++) {
       let duration = (timeNow - reservations[i].createdTime) / 60000;
+      // checks for 15 minute time limit
       if (duration >= 15) {
         expiredReservations.push(reservations[i]._id);
         expiredSpots.push(reservations[i]._spotId);

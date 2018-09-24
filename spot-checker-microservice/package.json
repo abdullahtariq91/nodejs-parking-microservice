@@ -9,9 +9,7 @@
   },
   "keywords": [
     "nodejs",
-    "mongodb",
-    "express",
-    "api"
+    "mongodb"
   ],
   "author": "Abdullah Tariq",
   "license": "ISC",

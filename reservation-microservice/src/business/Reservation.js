@@ -65,10 +65,9 @@ const getReservations = async (spotId) => {
   }
 };
 
-
 const updateReservation = async (spotId, reservationId, params) => {
   try {
-    if (params.status !== 'canceled' || params.status !== 'finished') {
+    if (params.status !== 'finished') {
       return ({
         code: 400,
         message: 'Incomplete request body'
