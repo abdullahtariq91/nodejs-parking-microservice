@@ -33,6 +33,7 @@ const createSpot = async (params) => {
         message: 'Name not found in request body'
       });
     }
+    params.status = 'free';
     const spot = await spotModel.create(params);
     if (!spot) {
       return ({
