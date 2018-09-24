@@ -5,7 +5,7 @@ const spotModel = require(common.routing('src/models', 'Spot.js'));
 // public functions
 const reserveSpot = async (spotId, params) => {
   try {
-    if (!params.license || !params._spotId) {
+    if (!params.license) {
       return ({
         code: 400,
         message: 'Incomplete request body'
@@ -13,7 +13,7 @@ const reserveSpot = async (spotId, params) => {
     }
     let reservationObj = {};
     reservationObj.license = params.license;
-    reservationObj._spotId = params.spotId;
+    reservationObj._spotId = spotId;
     reservationObj.paid = params.paid;
     reservationObj.status = 'reserved';
     reservationObj.createdTime = new Date();
