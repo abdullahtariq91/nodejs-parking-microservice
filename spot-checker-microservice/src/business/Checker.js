@@ -1,5 +1,5 @@
-const spotModel = require(common.routing('src/models', 'Spot.js'));
-const reservationModel = require(common.routing('src/models', 'Reservation.js'));
+const spotModel = require('../models/Spot.js');
+const reservationModel = require('../models/Reservation.js');
 
 const checkSpots = async () => {
   const reservations = await reservationModel.find({ status: 'reserved', paid: true });

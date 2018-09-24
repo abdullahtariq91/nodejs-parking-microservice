@@ -6,9 +6,8 @@ const reservationObj = new Schema({
   license: { type: String, unique: true, required: true },
   _spotId: {type: Schema.Types.ObjectId, ref: 'Spots'},
   paid: { type: Boolean, default: false },
-  status: { type: string, enum: ['canceled', 'finished', 'reserved'] },
+  status: { type: String, enum: ['canceled', 'finished', 'reserved'] },
   createdTime: { type: Date }
 });
 
-CertificationObj.plugin(deepPopulate);
 module.exports = mongoose.model('Reservations', reservationObj);
