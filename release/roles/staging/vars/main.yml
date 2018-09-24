@@ -1,0 +1,17 @@
+ENV: 'staging'
+CLUSTER: 'parking-staging'
+PARKING_REPO: 'parking-staging'
+
+SPOT_CHECKER_AWS_LOG_GROUP: 'awslogs-spot-checker-staging'
+SPOT_CHECKER_AWS_LOG_PREFIX: 'spot-checker-staging'
+SPOT_CHECKER_SERVICE: 'spot-checker'
+SPOT_CHECKER_TASK_DEFINITION: 'spot-checker-staging-task'
+
+RESERVATION_AWS_LOG_GROUP: 'awslogs-reservation-staging'
+RESERVATION_AWS_LOG_PREFIX: 'reservation-staging'
+RESERVATION_SERVICE: 'reservation'
+RESERVATION_TASK_DEFINITION: 'reservation-staging-task'
+
+PORT: 80
+DATABASE_URL: 
+AWS_ACCOUNT_ID:

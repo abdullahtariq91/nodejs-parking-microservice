@@ -1,4 +1,4 @@
-const common = require('../../../spot-microservice/src/libs/common');
+const common = require('../libs/common');
 const spotModel = require(common.routing('src/models', 'Spot.js'));
 
 // public functions

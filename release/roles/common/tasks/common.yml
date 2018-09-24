@@ -1,0 +1,22 @@
+- set_fact:
+    TAG: "{{ lookup('pipe', 'date \"+%d-%m-%Y.%H-%M-%S\"') }}"
+
+- name: Build Reservation Docker Image
+  command: "docker-compose -f ../docker-compose.yml build reservation"
+  register: task_output
+- debug: var=task_output
+
+- name: AWS ECR Login
+  shell: "$(aws ecr get-login --region {{REGION}} --no-include-email)"
+  register: task_output
+- debug: var=task_output
+
+- name: Tag Reservation Docker Image
+  command: "docker tag reservation:build {{AWS_ACCOUNT_ID}}.dkr.ecr.eu-west-1.amazonaws.com/{{PARKING_REPO}}:{{TAG}}"
+  register: task_output
+- debug: var=task_output
+
+- name: Push Reservation Docker Image
+  command: "docker push {{AWS_ACCOUNT_ID}}.dkr.ecr.{{REGION}}.amazonaws.com/{{PARKING_REPO}}:{{TAG}}"
+  register: task_output
+- debug: var=task_output

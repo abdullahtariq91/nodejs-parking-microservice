@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const common = require('../libs/common');
-const SpotService = require(common.routing('src/business', 'Spot.js'));
+const ReservationService = require(common.routing('src/business', 'Reservation.js'));
 
 // add middleware for each call here
 router.route('/:spotId/reserve')

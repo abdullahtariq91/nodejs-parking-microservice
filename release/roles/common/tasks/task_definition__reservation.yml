@@ -1,0 +1,35 @@
+- name: Create Reservation Task Definition
+  ecs_taskdefinition:
+    containers:
+    - name: "reservation"
+      volumesFrom: []
+      memory: 500
+      portMappings: [
+        {
+          'hostPort': '{{PORT}}',
+          'containerPort': '{{PORT}}',
+          'protocol': 'tcp'
+        }
+      ]
+      essential: true
+      mountPoints: []
+      environment: "{{ENVIRONMENT}}"
+      logConfiguration: {
+        'logDriver': 'awslogs',
+        'options': {
+          'awslogs-group': '{{RESERVATION_AWS_LOG_GROUP}}',
+          'awslogs-region': '{{REGION}}',
+          'awslogs-stream-prefix': '{{RESERVATION_AWS_LOG_PREFIX}}'
+        }
+      }
+      workingDirectory: '/app/reservation'
+      image: "{{AWS_ACCOUNT_ID}}.dkr.ecr.eu-west-1.amazonaws.com/{{PARKING_REPO}}:{{TAG}}"
+      command: ['npm', 'start']
+      cpu: 0
+    family: "{{RESERVATION_TASK_DEFINITION}}"
+    network_mode: "host"
+    state: present
+  register: task_output
+- set_fact:
+    updateClusterService: {'service': '{{RESERVATION_SERVICE}}', 'taskDefinitionArn': '{{task_output.taskdefinition.taskDefinitionArn}}', 'family': '{{RESERVATION_TASK_DEFINITION}}'}
+- debug: var=task_output

@@ -1,0 +1,17 @@
+- name: List Service Tasks
+  command: "aws ecs list-tasks --cluster {{CLUSTER}} --service-name {{updateClusterService.service}} --desired-status RUNNING"
+  register: task_list
+- debug: var=task_list
+
+- name: Stop ECS Service Tasks
+  ecs_task:
+    operation: stop
+    cluster: "{{CLUSTER}}"
+    task_definition: "{{updateClusterService.family}}"
+    task: "{{item}}"
+  with_items: "{{(task_list.stdout | from_json).taskArns}}"
+  register: stop_service
+- debug: var=stop_service
+
+- name: Update ECS Service
+  command: "aws ecs update-service --cluster {{CLUSTER}} --service {{updateClusterService.service}} --task-definition {{updateClusterService.taskDefinitionArn}}"

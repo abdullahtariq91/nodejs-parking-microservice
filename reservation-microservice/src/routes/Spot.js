@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const common = require('../../../spot-microservice/src/libs/common');
+const common = require('../libs/common');
 const SpotService = require(common.routing('src/business', 'Spot.js'));
 
 // add middleware for each call here

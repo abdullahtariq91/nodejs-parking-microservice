@@ -1,6 +1,5 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
-const deepPopulate = require('mongoose-deep-populate')(mongoose);
 
 const reservationObj = new Schema({
   license: { type: String, unique: true, required: true },

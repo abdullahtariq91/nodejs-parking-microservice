@@ -1,0 +1,41 @@
+version: "3"
+
+services:
+  spotchecker:
+    build:
+      context: ./spot-checker-microservice
+      dockerfile: Dockerfile
+    environment:
+      DATABASE_URL: 'mongodb://@mongo:27017/nodejs-spots'
+    container_name: spotchecker
+    image: spotchecker
+    depends_on:
+      - mongo
+    links:
+      - mongo
+    ports:
+      - 8080:80
+    volumes:
+      - ./spot-checker-microservice:/app/spotchecker
+
+  reservation:
+    build:
+      context: ./reservation-microservice
+      dockerfile: Dockerfile
+    environment:
+      DATABASE_URL: 'mongodb://@mongo:27017/nodejs-spots'
+    container_name: reservation
+    image: reservation
+    depends_on:
+      - mongo
+    links:
+      - mongo
+    ports:
+      - 8081:80
+    volumes:
+      - ./reservation-microservice:/app/reservation
+
+  mongo:
+    image: mongo
+    ports:
+      - 27017:27017
