@@ -25,7 +25,7 @@ const reserveSpot = async (spotId, params) => {
         message: 'Reservation not created'
       });
     } else {
-      await spotModel.findOneAndUpdate({ _id: _spotId }, { status: 'reserved' });
+      await spotModel.findOneAndUpdate({ _id: spotId }, { status: 'reserved' });
       return ({
         code: 200,
         message: 'Created reservation',

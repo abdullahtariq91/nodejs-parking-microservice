@@ -2,7 +2,7 @@ const spotModel = require('../models/Spot.js');
 const reservationModel = require('../models/Reservation.js');
 
 const checkSpots = async () => {
-  const reservations = await reservationModel.find({ status: 'reserved', paid: true });
+  const reservations = await reservationModel.find({ status: 'reserved', paid: false });
   if (reservations) {
     let expiredReservations = [];
     let expiredSpots = [];
