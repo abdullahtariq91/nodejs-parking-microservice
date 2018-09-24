@@ -5,7 +5,7 @@ const expect = chai.expect;
 
 chai.use(chaiHttp);
 // testing endpoints only
-describe('Unit Testing', () => {
+describe('Spot Unit Testing', () => {
   beforeEach((done) => {
   });
 

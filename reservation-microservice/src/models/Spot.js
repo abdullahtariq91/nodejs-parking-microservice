@@ -2,9 +2,8 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const spotObj = new Schema({
-  number: { type: String, unique: true },
-  price: { type: Number },
-  paid: { type: Boolean, default: false },
+  number: { type: String, unique: true, required: true },
+  price: { type: Number, default: 0 },
   status: { type: string, enum: ['free', 'reserved'] },
   reservationTime: { type: Date }
 });

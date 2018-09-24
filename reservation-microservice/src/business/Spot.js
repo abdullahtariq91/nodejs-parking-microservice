@@ -1,10 +1,10 @@
-const common = require('../libs/common');
+const common = require('../../../spot-microservice/src/libs/common');
 const spotModel = require(common.routing('src/models', 'Spot.js'));
 
 // public functions
 const getSpots = async () => {
   try {
-    const spots = await spotModel.find({ });
+    const spots = await spotModel.find({ status: 'free' });
     if (!spots) {
       return ({
         code: 404,
@@ -27,7 +27,7 @@ const getSpots = async () => {
 
 const createSpot = async (params) => {
   try {
-    if (!params.name) {
+    if (!params.number) {
       return ({
         code: 400,
         message: 'Name not found in request body'
