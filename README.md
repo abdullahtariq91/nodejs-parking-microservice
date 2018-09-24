@@ -44,16 +44,19 @@ spot-checker-microservice
 
 ### node.js >= 8.11.3
 ### MongoDB
+### Docker
+### Ansible
 
 ## Reservation Microservice:
 
 ### Scripts & Installation
-####
+#### `docker-compose up --build`
+This will execute the `docker-compose.yml` in root directory, which in returns executes the individual Docker files in relevant services. The port exposed for Reservation API is `8080`.
 
 #### `npm test`
 Runs test for the API.
 
-### Endpoints
+### Endpoints (localhost:8080)
 `GET /api/spots`
 Returns Spots.
 
@@ -80,3 +83,9 @@ Updates reservation based on Spot id & Reservation Id. Send `status` (String) in
 
 ## Spot Checker Microservice
 Runs every minute to update all 'expired' (>= 15 minutes) Spot and Reserved records to 'free' and 'cancelled' respectively.
+
+# Notes
+For deployment scripts, you first have to install Ansible. Basic commands should be `ansible-playbook parking-reservation-staging-release.yml` to deploy the Reservation service to AWS.<br>
+For Spot Checker, the command is `ansible-playbook parking-spot-checker-staging-release.yml`.<br>
+
+Testing & AWS environment provisoning is incomplete.
