@@ -1,0 +1,44 @@
+{
+  "name": "nodejs-parking-api",
+  "version": "1.0.0",
+  "description": "simple API using Node.js, MongoDB, Express for parking",
+  "main": "app.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/abdullahtariq91/nodejs-parking-api.git"
+  },
+  "keywords": [
+    "nodejs",
+    "mongodb",
+    "express",
+    "api"
+  ],
+  "author": "Abdullah Tariq",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/abdullahtariq91/nodejs-parking-api/issues"
+  },
+  "homepage": "https://github.com/abdullahtariq91/nodejs-parking-api#readme",
+  "scripts": {
+    "start": "node ./bin/www",
+    "test": "mocha"
+  },
+  "dependencies": {
+    "bluebird": "~3.5.0",
+    "body-parser": "^1.18.3",
+    "chai-http": "^4.0.0",
+    "debug": "~2.6.9",
+    "express": "~4.16.0",
+    "mongoose": "^5.1.5",
+    "mongoose-deep-populate": "~3.0.0",
+    "jwt-simple": "~0.5.1",
+    "async": "~2.5.0"
+  },
+  "devDependencies": {
+    "chai": "^4.1.2",
+    "mocha": "^5.2.0"
+  },
+  "engines": {
+    "node": "=8.11.3"
+  }
+}
